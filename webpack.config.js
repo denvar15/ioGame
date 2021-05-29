@@ -18,7 +18,7 @@ module.exports = {
                 loader: 'babel',
                 options: {
                     presets: [
-                        ['es2015', { 'modules': false }]
+                        ['commonjs', { 'modules': false }]
                     ],
                     plugins: [
 
