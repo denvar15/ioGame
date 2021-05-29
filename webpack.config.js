@@ -1,5 +1,3 @@
-const { CheckerPlugin } = require('awesome-typescript-loader')
-
 module.exports = {
     entry: "./src/client/js/app.js",
     output: {
@@ -28,16 +26,9 @@ module.exports = {
                 },
             },
             {
-                test: /\.tsx?$/,
-                loader: 'awesome-typescript-loader'
-            },
-            {
                 test: /\.json$/,
                 loader: 'json-loader'
             }
-        ],
-        plugins: [
-            new CheckerPlugin()
-        ],
+        ]
     }
 };
