@@ -2,10 +2,33 @@ var io = require('socket.io-client');
 var ChatClient = require('./chat-client');
 var Canvas = require('./canvas');
 var global = require('./global');
-
 var playerNameInput = document.getElementById('playerNameInput');
 var socket;
 var reason;
+
+var js_lang = '<?php echo $js_lang;?>';
+window.addEventListener('load', function() {
+    // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+    if (typeof window.ethereum  !== 'undefined') {
+        // Use Mist/MetaMask's provider
+        //web3js = new Web3(web3.currentProvider);
+        web3js = new Web3(ethereum);
+        //console.log('MetaMask is installed!');
+        ethereum.on('chainChanged', (_chainId) => window.location.reload());
+        ethereum.on('accountsChanged', (accounts) => window.location.reload());
+        window.startApp('<?php echo $activeItem; ?>', '<?php echo $globalItemId; ?>', js_lang);
+    } else {
+        // Handle the case where the user doesn't have Metamask installed
+        // Probably show them a message prompting them to install Metamask
+        //console.log('MetaMask is NOT installed!');
+        let start = document.getElementById('startMenuWrapper');
+        start.style.display = 'none';
+        let deeks = document.getElementById('deeksMenu');
+        deeks.style.display = 'none';
+        let container = document.getElementById('infocontainer-error');
+        container.style.display = 'block';
+    }
+});
 
 var debug = function(args) {
     if (console && console.log) {
@@ -25,6 +48,7 @@ function startGame(type) {
     global.screenHeight = window.innerHeight;
 
     document.getElementById('startMenuWrapper').style.maxHeight = '0px';
+    document.getElementById('deeksMenu').style.display = 'none';
     document.getElementById('gameAreaWrapper').style.opacity = 1;
     if (!socket) {
         socket = io({query:"type=" + type});
@@ -408,10 +432,18 @@ function drawPlayers(order) {
             }
 
         }
+
+        var imgUser = document.createElement('img'); // Используем HTMLImageElement
+        let image = window.localStorage.getItem('deekImage')
+        //imgUser.src = 'https://deekhash.xyz/images/deek/417.png';
+        imgUser.src = image;
+        imgUser.alt = 'alt text';
+        graph.drawImage(imgUser, circle.x-cellCurrent.radius, circle.y-cellCurrent.radius, cellCurrent.radius*2, cellCurrent.radius*2);
+
         graph.lineJoin = 'round';
         graph.lineCap = 'round';
-        graph.fill();
-        graph.stroke();
+        //graph.fill();
+        //graph.stroke();
         var nameCell = "";
         if(typeof(userCurrent.id) == "undefined")
             nameCell = player.name;

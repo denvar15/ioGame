@@ -116,11 +116,31 @@ div {
     outline: none;
 }
 
+.Logo {
+    width: 300px;
+    text-align: left;
+    opacity: 30%;
+    position: fixed
+}
+
 #startMenu {
     position: relative;
     margin: auto;
     margin-top: 100px;
     width: 350px;
+    padding: 20px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+#deeksMenu, #infocontainer-error {
+    position: relative;
+    margin: auto;
+    margin-top: 50px;
+    width: 60vw;
     padding: 20px;
     border-radius: 5px;
     -moz-border-radius: 5px;
@@ -155,7 +175,7 @@ div {
     box-shadow: 0 0 3px 1px #DDDDDD;
 }
 
-#startButton, #spectateButton {
+#startButton, #spectateButton, #button-connect, #metamask-connect {
     position: relative;
     margin: auto;
     margin-top: 10px;
@@ -179,7 +199,8 @@ div {
 }
 
 #spectateButton:active, #spectateButton:hover,
-#startButton:active, #startButton:hover {
+#startButton:active, #startButton:hover, #button-connect:hover,
+#metamask-connect:hover {
     top: 1px;
     background: #55D88B;
     outline: none;
