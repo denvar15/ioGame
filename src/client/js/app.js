@@ -81,7 +81,6 @@ window.onload = function() {
     };
 
     btn.onclick = function () {
-
         // Checks if the nick is valid.
         if (validNick()) {
             nickErrorText.style.opacity = 0;
@@ -128,7 +127,8 @@ var playerConfig = {
     textColor: '#FFFFFF',
     textBorder: '#000000',
     textBorderSize: 3,
-    defaultSize: 30
+    defaultSize: 30,
+    borderColor: '#000000',
 };
 
 var player = {
@@ -147,6 +147,10 @@ var fireFood = [];
 var users = [];
 var leaderboard = [];
 var target = {x: player.x, y: player.y};
+let visibleBorder = false;
+let showMass = false;
+let continuity = false;
+let targetOld = {x:10, y:10}
 global.target = target;
 
 window.canvas = new Canvas();
@@ -154,12 +158,15 @@ window.chat = new ChatClient();
 
 var visibleBorderSetting = document.getElementById('visBord');
 visibleBorderSetting.onchange = settings.toggleBorder;
+visibleBorderSetting.onchange = () => {visibleBorder = !visibleBorder}
 
 var showMassSetting = document.getElementById('showMass');
 showMassSetting.onchange = settings.toggleMass;
+showMassSetting.onchange = () => {showMass = !showMass}
 
 var continuitySetting = document.getElementById('continuity');
 continuitySetting.onchange = settings.toggleContinuity;
+continuitySetting.onchange = () => {continuity = !continuity}
 
 var roundFoodSetting = document.getElementById('roundFood');
 roundFoodSetting.onchange = settings.toggleRoundFood;
@@ -383,6 +390,7 @@ function drawPlayers(order) {
         var points = 30 + ~~(cellCurrent.mass/5);
         var increase = Math.PI * 2 / points;
 
+
         graph.strokeStyle = 'hsl(' + userCurrent.hue + ', 100%, 45%)';
         graph.fillStyle = 'hsl(' + userCurrent.hue + ', 100%, 50%)';
         graph.lineWidth = playerConfig.border;
@@ -460,16 +468,17 @@ function drawPlayers(order) {
         graph.textBaseline = 'middle';
         graph.font = 'bold ' + fontSize + 'px sans-serif';
 
-        if (global.toggleMassState === 0) {
+        if (!showMass) {
             graph.strokeText(nameCell, circle.x, circle.y);
             graph.fillText(nameCell, circle.x, circle.y);
         } else {
+            let mass = Math.round(cellCurrent.mass);
             graph.strokeText(nameCell, circle.x, circle.y);
             graph.fillText(nameCell, circle.x, circle.y);
             graph.font = 'bold ' + Math.max(fontSize / 3 * 2, 10) + 'px sans-serif';
             if(nameCell.length === 0) fontSize = 0;
-            graph.strokeText(Math.round(cellCurrent.mass), circle.x, circle.y+fontSize);
-            graph.fillText(Math.round(cellCurrent.mass), circle.x, circle.y+fontSize);
+            graph.strokeText(mass.toString(), circle.x, circle.y+fontSize);
+            graph.fillText(mass.toString(), circle.x, circle.y+fontSize);
         }
     }
 }
@@ -583,7 +592,7 @@ function gameLoop() {
             fireFood.forEach(drawFireFood);
             viruses.forEach(drawVirus);
 
-            if (global.borderDraw) {
+            if (visibleBorder) {
                 drawborder();
             }
             var orderMass = [];
@@ -599,9 +608,14 @@ function gameLoop() {
             orderMass.sort(function(obj1, obj2) {
                 return obj1.mass - obj2.mass;
             });
-
             drawPlayers(orderMass);
-            socket.emit('0', window.canvas.target); // playerSendTarget "Heartbeat".
+            if (continuity) {
+                targetOld.x = window.canvas.target.x !== 0 ? window.canvas.target.x : targetOld.x;
+                targetOld.y = window.canvas.target.y !== 0 ? window.canvas.target.y : targetOld.y;
+                socket.emit('0', targetOld);
+            } else {
+                socket.emit('0', window.canvas.target); // playerSendTarget "Heartbeat".
+            }
 
         } else {
             graph.fillStyle = '#333333';

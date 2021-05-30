@@ -32,4 +32,5 @@ module.exports = {
     toggleMassState: 0,
     backgroundColor: '#AAB0B3',
     lineColor: '#000000',
+    animLoopHandle: false
 };
