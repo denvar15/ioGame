@@ -31,7 +31,9 @@
             <input type="text" tabindex="0" autofocus placeholder="Enter your name here" id="playerNameInput" maxlength="25" />
             <b class="input-error">Nick must be alphanumeric characters only!</b>
             <br />
-            <a onclick="document.getElementById('spawn_cell').play();"><button id="startButton">Play</button></a>
+            <a>
+                <button id="startButton">Play</button>
+            </a>
             <button id="spectateButton">Spectate</button>
             <button id="settingsButton">Settings</button>
             <br />
@@ -54,15 +56,14 @@
                     <li>Objective: Try to get fat and eat other players.</li>
                 </ul>
             </div>
-
+           </div>
+        <div id="deeksMenu" style="display: none">
+            <div id="deeks" style="display: block; width: auto">
+                <h3>Your deeks</h3>
+            </div>
         </div>
-    </div>
-    <div id="deeksMenu" style="display: none">
-        <div id="deeks" style="display: block; width: auto">
-            <h3>Your deeks</h3>
         </div>
-    </div>
-    <div id="metamaskConnect" style="display: none; text-align: center; margin-top: 45vh">
+        <div id="metamaskConnect" style="display: none; text-align: center; margin-top: 45vh">
         <button id="metamask-connect" style="width: 30vw" onclick={window.ethereum.enable()}>Connect Metamask</button>
     </div>
     <div id="infocontainer-error" style="display: none">

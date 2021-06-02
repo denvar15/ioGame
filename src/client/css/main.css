@@ -5,7 +5,8 @@
 
 html, body {
     background-color: #222;
-    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 html, body, canvas {
@@ -126,7 +127,7 @@ div {
 #startMenu {
     position: relative;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 5vh;
     width: 350px;
     padding: 20px;
     border-radius: 5px;
@@ -136,12 +137,25 @@ div {
     box-sizing: border-box;
 }
 
-#deeksMenu, #infocontainer-error {
+#infocontainer-error {
     position: relative;
     margin: auto;
     margin-top: 50px;
     width: 60vw;
     padding: 20px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+#deeksMenu {
+    position: relative;
+    margin: auto;
+    margin-top: 3vh;
+    max-width: 60vw;
+    padding: 10px;
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -201,7 +215,6 @@ div {
 #spectateButton:active, #spectateButton:hover,
 #startButton:active, #startButton:hover, #button-connect:hover,
 #metamask-connect:hover {
-    top: 1px;
     background: #55D88B;
     outline: none;
     -webkit-box-shadow: none;
@@ -232,20 +245,30 @@ div {
 }
 
 #settingsButton:active, #settingsButton:hover {
-    top: 1px;
     background: #55D88B;
     outline: none;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
 
-#settings, #startMenuWrapper {
+#settings {
     -webkit-transition: max-height 1s;
     -moz-transition: max-height 1s;
     -ms-transition: max-height 1s;
     -o-transition: max-height 1s;
     transition: max-height 1s;
     overflow: hidden;
+}
+
+#startMenuWrapper {
+    -webkit-transition: max-height 1s;
+    -moz-transition: max-height 1s;
+    -ms-transition: max-height 1s;
+    -o-transition: max-height 1s;
+    transition: max-height 1s;
+    overflow: hidden;
+    z-index: 2;
+
 }
 
 #settings {
@@ -269,13 +292,10 @@ div {
     font-size : 12px;
 }
 
-#startMenuWrapper {
-    z-index: 2;
-}
-
 #gameAreaWrapper {
     position: absolute !important;
     top: 0;
+    bottom: 0;
     left: 0;
     opacity: 0;
 }

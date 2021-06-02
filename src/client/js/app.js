@@ -47,7 +47,7 @@ function startGame(type) {
     global.screenWidth = window.innerWidth;
     global.screenHeight = window.innerHeight;
 
-    document.getElementById('startMenuWrapper').style.maxHeight = '0px';
+    document.getElementById('startMenuWrapper').style.display = 'none';
     document.getElementById('deeksMenu').style.display = 'none';
     document.getElementById('gameAreaWrapper').style.opacity = 1;
     if (!socket) {
@@ -83,6 +83,7 @@ window.onload = function() {
     btn.onclick = function () {
         // Checks if the nick is valid.
         if (validNick()) {
+            document.body.style.overflow = 'hidden'
             nickErrorText.style.opacity = 0;
             startGame('player');
         } else {
