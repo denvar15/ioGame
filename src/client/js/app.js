@@ -5,7 +5,6 @@ var global = require('./global');
 var playerNameInput = document.getElementById('playerNameInput');
 var socket;
 var reason;
-
 var js_lang = '<?php echo $js_lang;?>';
 window.addEventListener('load', function() {
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
@@ -619,6 +618,7 @@ function gameLoop() {
             }
 
         } else {
+            console.log('ASDJASJDSJA')
             graph.fillStyle = '#333333';
             graph.fillRect(0, 0, global.screenWidth, global.screenHeight);
 

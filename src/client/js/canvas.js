@@ -12,6 +12,7 @@ class Canvas {
         this.cv = document.getElementById('cvs');
         this.cv.width = global.screenWidth;
         this.cv.height = global.screenHeight;
+        window.addEventListener('keydown', this.escapeListener, false)
         this.cv.addEventListener('mousemove', this.gameInput, false);
         this.cv.addEventListener('mouseout', this.outOfBounds, false);
         this.cv.addEventListener('keypress', this.keyInput, false);
@@ -24,6 +25,16 @@ class Canvas {
         this.cv.addEventListener('touchmove', this.touchInput, false);
         this.cv.parent = self;
         global.canvas = this;
+    }
+
+    escapeListener(event) {
+        const key = event.key; // Or const {key} = event; in ES6+
+        if (key === "Escape") {
+            let start = document.getElementById('startMenuWrapper');
+            start.style.display = 'block';
+            let deeksMenu = document.getElementById('deeksMenu');
+            deeksMenu.style.display = 'block';
+        }
     }
 
     // Function called when a key is pressed, will change direction if arrow key.
@@ -136,7 +147,7 @@ class Canvas {
     // Chat command callback functions.
     keyInput(event) {
     	var key = event.which || event.keyCode;
-    	if (key === global.KEY_FIREFOOD && this.parent.reenviar) {
+        if (key === global.KEY_FIREFOOD && this.parent.reenviar) {
             this.parent.socket.emit('1');
             this.parent.reenviar = false;
         }
@@ -147,6 +158,9 @@ class Canvas {
         }
         else if (key === global.KEY_CHAT) {
             document.getElementById('chatInput').focus();
+        }
+        else if (key === global.KEY_ESC) {
+            console.log('BIBA')
         }
     }
 }
