@@ -24,10 +24,17 @@
         </div>
         <canvas tabindex="1" id="cvs"></canvas>
     </div>
-    <img src="img/deekhash_logo.png" class="Logo">
+    <a href="https://deekhash.xyz/">
+        <img src="img/deekhash_logo.png" class="Logo">
+    </a>
+    <button id="menuButton" class="menuButtonSpecial">
+        Menu
+    </button>
     <div id="startMenuWrapper">
         <div id="startMenu">
-            <img src="img/deekhash_logo.png" style="width: 300px; text-align: center">
+            <a href="https://deekhash.xyz/">
+                <img src="img/deekhash_logo.png" style="width: 300px; text-align: center">
+            </a>
             <input type="text" tabindex="0" autofocus placeholder="Enter your name here" id="playerNameInput" maxlength="25" />
             <b class="input-error">Nick must be alphanumeric characters only!</b>
             <br />
@@ -58,16 +65,16 @@
             </div>
            </div>
         <div id="deeksMenu" style="display: none">
-            <div id="deeks" style="display: block; width: auto">
-                <h3>Your deeks</h3>
+            <div id="deeks" style="display: block; width: auto; margin-left: 10px">
+                <h3>Choose your deek</h3>
             </div>
         </div>
         </div>
-        <div id="metamaskConnect" style="display: none; text-align: center; margin-top: 45vh">
+    <div id="metamaskConnect" style="display: none; text-align: center; margin-top: 45vh">
         <button id="metamask-connect" style="width: 30vw" onclick={window.ethereum.enable()}>Connect Metamask</button>
     </div>
     <div id="infocontainer-error" style="display: none">
-        <h3 style="text-align: center">Для игры необходимо установить Metamask!</h3>
+        <h3 style="text-align: center">To play this game you need to install Metamask!</h3>
         <div style="text-align: center">
             <img src="img/metamask.png" alt="Необходимо установить Metamask" title="Необходимо установить Metamask"
                  style="margin-top: 30px; width: 120px; height: auto;"/>

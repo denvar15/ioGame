@@ -36,6 +36,7 @@ async function startApp(section, item_id, js_lang) {
 			console.log('Please connect to MetaMask.');
 		}
 	} else if (accounts[0] !== currentAccount) {
+        window.localStorage.clear()
 		currentAccount = accounts[0];  
 	}
 	
@@ -48,6 +49,7 @@ async function startApp(section, item_id, js_lang) {
         let deeksMenu = document.getElementById('deeksMenu');
         deeksMenu.style.display = 'block'
         let container = document.getElementById('deeks');
+        let picked = false;
 
         getBalanceOf(account)
             .then(function(result) {
@@ -65,15 +67,23 @@ async function startApp(section, item_id, js_lang) {
                                 var img_url = '/images/deek_clear/' + resultToken + '.png';
                                 let deek = document.createElement('img');
                                 deek.src = 'https://deekhash.xyz/' + img_url;
+                                deek.className = 'deekImage';
                                 deek.alt = 'alt text';
                                 deek.width = 50
                                 deek.height = 50
                                 deek.onclick = function (click) {
-                                    console.log('DEEK', click.srcElement.currentSrc)
                                     window.localStorage.setItem('deekImage', deek.src)
+                                    let deeks = document.getElementsByClassName("deekImage");
+                                    for (let i=0; i < deeks.length; i++) {
+                                        if (deeks[i] !== deek) {
+                                            deeks[i].style.border = 'none';
+                                            deeks[i].style.borderRadius = 'none';
+                                        }
+                                    }
                                     deek.style.border = deek.style.border !== '2px solid black' ? '2px solid black' : 'none';
                                     deek.style.borderRadius = deek.style.borderRadius !== '25% 10%' ? '25% 10%' : 'none';
                                 }
+                                window.localStorage.setItem('deekImage', deek.src)
                                 container.append(deek);
                                 i++
                             /*   $.ajax({

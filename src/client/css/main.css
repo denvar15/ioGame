@@ -150,6 +150,19 @@ div {
     box-sizing: border-box;
 }
 
+#metamaskConnect {
+    position: relative;
+    margin: auto;
+    margin-top: 50px;
+    width: 40vw;
+    padding: 20px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background-color: white;
+    box-sizing: border-box;
+}
+
 #deeksMenu {
     position: relative;
     margin: auto;
@@ -214,7 +227,7 @@ div {
 
 #spectateButton:active, #spectateButton:hover,
 #startButton:active, #startButton:hover, #button-connect:hover,
-#metamask-connect:hover {
+#metamask-connect:hover, #menuButton:hover {
     background: #55D88B;
     outline: none;
     -webkit-box-shadow: none;
@@ -321,4 +334,33 @@ input [type="image"]:focus{
 *:focus {
  outline: 1px solid transparent;
  border-style: none;
+}
+
+.deekImage:hover {
+    outline: 2px solid lightgrey;
+}
+
+.menuButtonSpecial {
+    width: 10vw;
+    top: 7vh;
+    left: 10px;
+    text-align: left;
+    position: fixed;
+    margin: auto;
+    margin-top: 10px;
+    height: 40px;
+    box-sizing: border-box;
+    font-size: large;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    background: #2ecc71;
+    border: 0;
+    border-bottom: 2px solid #28be68;
+    cursor: pointer;
+    -webkit-box-shadow: inset 0 -2px #28be68;
+    box-shadow: inset 0 -2px #28be68;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    margin-bottom: 10px;
 }

@@ -73,7 +73,15 @@ window.onload = function() {
 
     var btn = document.getElementById('startButton'),
         btnS = document.getElementById('spectateButton'),
+        btnMenu = document.getElementById('menuButton'),
         nickErrorText = document.querySelector('#startMenu .input-error');
+
+    btnMenu.onclick = function () {
+        let start = document.getElementById('startMenuWrapper');
+        start.style.display = start.style.display === 'block' ? 'none' : 'block';
+        let deeksMenu = document.getElementById('deeksMenu');
+        deeksMenu.style.display = deeksMenu.style.display === 'block' ? 'none' : 'block';
+    }
 
     btnS.onclick = function () {
         startGame('spectate');

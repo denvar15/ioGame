@@ -33,20 +33,8 @@ class ChatClient {
             self.toggleDarkMode();
         });
 
-        this.registerCommand('border', 'Toggle visibility of border.', function () {
-            self.toggleBorder();
-        });
-
-        this.registerCommand('mass', 'Toggle visibility of mass.', function () {
-            self.toggleMass();
-        });
-
         this.registerCommand('continuity', 'Toggle continuity.', function () {
             self.toggleContinuity();
-        });
-
-        this.registerCommand('roundfood', 'Toggle food drawing.', function (args) {
-            self.toggleRoundFood(args);
         });
 
         this.registerCommand('help', 'Information about the chat commands.', function () {
@@ -54,6 +42,7 @@ class ChatClient {
         });
 
         this.registerCommand('login', 'Login as an admin.', function (args) {
+            console.log('LOGIN', args)
             self.socket.emit('pass', args);
         });
 
