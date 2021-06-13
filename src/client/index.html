@@ -41,6 +41,11 @@
             <a>
                 <button id="startButton">Play</button>
             </a>
+            <div id="deeksMenu" style="display: none; border: #2ecc71 solid 1px; border-radius: 5px">
+                <div id="deeks" style="display: block; width: auto; margin-left: 10px">
+                    <h3 style="margin-top: -5px">Choose your deek</h3>
+                </div>
+            </div>
             <button id="spectateButton">Spectate</button>
             <button id="settingsButton">Settings</button>
             <br />
@@ -63,13 +68,8 @@
                     <li>Objective: Try to get fat and eat other players.</li>
                 </ul>
             </div>
-           </div>
-        <div id="deeksMenu" style="display: none">
-            <div id="deeks" style="display: block; width: auto; margin-left: 10px">
-                <h3>Choose your deek</h3>
-            </div>
         </div>
-        </div>
+    </div>
     <div id="metamaskConnect" style="display: none; text-align: center; margin-top: 45vh">
         <button id="metamask-connect" style="width: 30vw" onclick={window.ethereum.enable()}>Connect Metamask</button>
     </div>

@@ -80,6 +80,7 @@ async function startApp(section, item_id, js_lang) {
                                             deeks[i].style.borderRadius = 'none';
                                         }
                                     }
+                                    deek.style.display = 'inline'
                                     deek.style.border = deek.style.border !== '2px solid black' ? '2px solid black' : 'none';
                                     deek.style.borderRadius = deek.style.borderRadius !== '25% 10%' ? '25% 10%' : 'none';
                                 }
