@@ -291,12 +291,14 @@ io.on('connection', function (socket) {
             player.y = position.y;
             player.target.x = 0;
             player.target.y = 0;
+            console.log(player)
             if(type === 'player') {
                 player.cells = [{
                     mass: c.defaultPlayerMass,
                     x: position.x,
                     y: position.y,
-                    radius: radius
+                    radius: radius,
+                    image: player.image
                 }];
                 player.massTotal = c.defaultPlayerMass;
             }
@@ -445,7 +447,7 @@ io.on('connection', function (socket) {
     });
     socket.on('2', function(virusCell) {
         function splitCell(cell) {
-            if(cell && cell.mass && cell.mass >= c.defaultPlayerMass*2) {
+            if(cell && cell.mass && cell.mass >= c.defaultPlayerMass*4) {
                 cell.mass = cell.mass/2;
                 cell.radius = util.massToRadius(cell.mass);
                 currentPlayer.cells.push({
@@ -529,7 +531,7 @@ function tickPlayer(currentPlayer) {
     }
 
     function collisionCheck(collision) {
-        if (collision.aUser.mass > collision.bUser.mass * 1.1  && collision.aUser.radius > Math.sqrt(Math.pow(collision.aUser.x - collision.bUser.x, 2) + Math.pow(collision.aUser.y - collision.bUser.y, 2))*1.75) {
+        if (collision.aUser.mass > collision.bUser.mass * 1.1  && collision.aUser.radius > Math.sqrt(Math.pow(collision.aUser.x - collision.bUser.x, 2) + Math.pow(collision.aUser.y - collision.bUser.y, 2))*1.25) {
             console.log('[DEBUG] Killing user: ' + collision.bUser.id);
             console.log('[DEBUG] Collision info:');
             console.log(collision);
@@ -568,7 +570,7 @@ function tickPlayer(currentPlayer) {
         var virusCollision = virus.map(funcFood)
            .reduce( function(a, b, c) { return b ? a.concat(c) : a; }, []);
 
-        if(virusCollision > 0 && currentCell.mass > virus[virusCollision].mass) {
+        if(virusCollision > 0 && currentCell.mass > virus[virusCollision].mass * 2) {
           sockets[currentPlayer.id].emit('virusSplit', z);
           virus.splice(virusCollision, 1);
         }
@@ -708,7 +710,8 @@ function sendUpdates() {
                                 cells: f.cells,
                                 massTotal: Math.round(f.massTotal),
                                 hue: f.hue,
-                                name: f.name
+                                name: f.name,
+                                image: f.image
                             };
                         } else {
                             //console.log("Nombre: " + f.name + " Es Usuario");

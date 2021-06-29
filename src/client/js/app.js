@@ -219,6 +219,8 @@ function setupSocket(socket) {
         player.screenWidth = global.screenWidth;
         player.screenHeight = global.screenHeight;
         player.target = window.canvas.target;
+        let image = window.localStorage.getItem('deekImage')
+        player.image = image
         global.player = player;
         window.chat.player = player;
         socket.emit('gotit', player);
@@ -432,10 +434,7 @@ function drawPlayers(order) {
             xstore[i] = x;
             ystore[i] = y;
         }
-        /*if (wiggle >= player.radius/ 3) inc = -1;
-        *if (wiggle <= player.radius / -3) inc = +1;
-        *wiggle += inc;
-        */
+
         for (i = 0; i < points; ++i) {
             if (i === 0) {
                 graph.beginPath();
@@ -449,23 +448,23 @@ function drawPlayers(order) {
 
         }
 
-        var imgUser = document.createElement('img'); // Используем HTMLImageElement
-        let image = window.localStorage.getItem('deekImage')
-        //imgUser.src = 'https://deekhash.xyz/images/deek/417.png';
-        imgUser.src = image;
-        imgUser.alt = 'alt text';
-        graph.drawImage(imgUser, circle.x-cellCurrent.radius, circle.y-cellCurrent.radius, cellCurrent.radius*2, cellCurrent.radius*2);
-
         graph.lineJoin = 'round';
         graph.lineCap = 'round';
         //graph.fill();
         //graph.stroke();
         var nameCell = "";
-        if(typeof(userCurrent.id) == "undefined")
+        var imgUser = document.createElement('img'); // Используем HTMLImageElement
+        if(typeof(userCurrent.id) == "undefined") {
+            imgUser.src = player.image;
+            imgUser.alt = 'alt text';
+            graph.drawImage(imgUser, circle.x-cellCurrent.radius, circle.y-cellCurrent.radius, cellCurrent.radius*2, cellCurrent.radius*2);
             nameCell = player.name;
-        else
+        } else {
+            imgUser.src = userCurrent.image;
+            imgUser.alt = 'alt text';
+            graph.drawImage(imgUser, circle.x-cellCurrent.radius, circle.y-cellCurrent.radius, cellCurrent.radius*2, cellCurrent.radius*2);
             nameCell = userCurrent.name;
-
+        }
         var fontSize = Math.max(cellCurrent.radius / 3, 12);
         graph.lineWidth = playerConfig.textBorderSize;
         graph.fillStyle = playerConfig.textColor;
@@ -589,6 +588,11 @@ function gameLoop() {
         graph.fillStyle = '#FFFFFF';
         graph.font = 'bold 30px sans-serif';
         graph.fillText('You died!', global.screenWidth / 2, global.screenHeight / 2);
+        graph.fillText('Click on menu to restart', global.screenWidth / 2, global.screenHeight / 2 + 40);
+        let menuButton = document.getElementById('menuButton');
+        menuButton.onclick = () => {
+            window.location.reload(false);
+        }
     }
     else if (!global.disconnected) {
         if (global.gameStart) {
@@ -624,9 +628,7 @@ function gameLoop() {
             } else {
                 socket.emit('0', window.canvas.target); // playerSendTarget "Heartbeat".
             }
-
         } else {
-            console.log('ASDJASJDSJA')
             graph.fillStyle = '#333333';
             graph.fillRect(0, 0, global.screenWidth, global.screenHeight);
 
@@ -646,6 +648,11 @@ function gameLoop() {
             if (reason !== '') {
                 graph.fillText('You were kicked for:', global.screenWidth / 2, global.screenHeight / 2 - 20);
                 graph.fillText(reason, global.screenWidth / 2, global.screenHeight / 2 + 20);
+                graph.fillText('Click on menu to restart', global.screenWidth / 2, global.screenHeight / 2 + 60);
+                let menuButton = document.getElementById('menuButton');
+                menuButton.onclick = () => {
+                    window.location.reload(false);
+                }
             }
             else {
                 graph.fillText('You were kicked!', global.screenWidth / 2, global.screenHeight / 2);
