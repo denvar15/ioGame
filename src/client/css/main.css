@@ -243,15 +243,6 @@ div {
     margin-bottom: 10px;
 }
 
-#spectateButton:active, #spectateButton:hover,
-#startButton:active, #startButton:hover, #button-connect:hover,
-#metamask-connect:hover, #menuButton:hover {
-    background: #55D88B;
-    outline: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
-
 #spectateButton:active, #spectateButton:hover, #button-connect:hover,
 #metamask-connect:hover, #menuButton:hover {
     background: #55D88B;
