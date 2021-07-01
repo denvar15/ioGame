@@ -5,7 +5,7 @@ var global = require('./global');
 var playerNameInput = document.getElementById('playerNameInput');
 var socket;
 var reason;
-var js_lang = '<?php echo $js_lang;?>';
+var js_lang = 'en';
 window.addEventListener('load', function() {
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
     if (typeof window.ethereum  !== 'undefined') {
@@ -15,7 +15,7 @@ window.addEventListener('load', function() {
         //console.log('MetaMask is installed!');
         ethereum.on('chainChanged', (_chainId) => window.location.reload());
         ethereum.on('accountsChanged', (accounts) => window.location.reload());
-        window.startApp('<?php echo $activeItem; ?>', '<?php echo $globalItemId; ?>', js_lang);
+        window.startApp('game', '0', js_lang);
     } else {
         // Handle the case where the user doesn't have Metamask installed
         // Probably show them a message prompting them to install Metamask
@@ -81,6 +81,8 @@ window.onload = function() {
         start.style.display = start.style.display === 'block' ? 'none' : 'block';
         let deeksMenu = document.getElementById('deeksMenu');
         deeksMenu.style.display = deeksMenu.style.display === 'block' ? 'none' : 'block';
+        $("#menuButton").removeClass("active-menuButton");
+        $(".escape-info").removeClass("active-escape-info");
     }
 
     btnS.onclick = function () {
@@ -88,14 +90,20 @@ window.onload = function() {
     };
 
     btn.onclick = function () {
-        // Checks if the nick is valid.
-        if (validNick()) {
-            document.body.style.overflow = 'hidden'
-            nickErrorText.style.opacity = 0;
-            startGame('player');
-        } else {
-            nickErrorText.style.opacity = 1;
-        }
+	    var btnActive = $(btn).hasClass('active-play');
+	    if (btnActive){
+	        // Checks if the nick is valid.
+	        if (validNick()) {
+	            document.body.style.overflow = 'hidden'
+	            nickErrorText.style.opacity = 0;
+	            startGame('player');
+	            $("#menuButton").addClass("active-menuButton");
+	            $(".escape-info").addClass("active-escape-info");
+	        } else {
+	            nickErrorText.style.opacity = 1;
+	            nickErrorText.style.display = 'block';
+	        }
+	    }
     };
 
     var settingsMenu = document.getElementById('settingsButton');
