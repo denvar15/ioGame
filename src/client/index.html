@@ -70,14 +70,14 @@
             </div>
         </div>
     </div>
-    <div id="metamaskConnect" style="display: none; text-align: center; margin-top: 45vh">
+    <div id="metamaskConnect" style="display: none; text-align: center;">
+	    <img src="img/metamask.png" alt="Необходимо установить Metamask" title="Необходимо установить Metamask" style="margin-top: 30px; width: 120px; height: auto;"/>
         <button id="metamask-connect" style="width: 30vw" onclick={window.ethereum.enable()}>Connect Metamask</button>
     </div>
     <div id="infocontainer-error" style="display: none">
         <h3 style="text-align: center">To play this game you need to install Metamask!</h3>
         <div style="text-align: center">
-            <img src="img/metamask.png" alt="Необходимо установить Metamask" title="Необходимо установить Metamask"
-                 style="margin-top: 30px; width: 120px; height: auto;"/>
+            <img src="img/metamask.png" alt="Необходимо установить Metamask" title="Необходимо установить Metamask" style="margin-top: 30px; width: 120px; height: auto;"/>
         </div>
         <a href="https://metamask.io/" target="_blank" rel="nofollow noopener" style="margin-top:20px; display: block; text-align: center">
             <button id="button-connect">Install Metamask</button>
