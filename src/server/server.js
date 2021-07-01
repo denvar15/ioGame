@@ -291,7 +291,7 @@ io.on('connection', function (socket) {
             player.y = position.y;
             player.target.x = 0;
             player.target.y = 0;
-            console.log(player)
+            //console.log(player)
             if(type === 'player') {
                 player.cells = [{
                     mass: c.defaultPlayerMass,
@@ -531,10 +531,10 @@ function tickPlayer(currentPlayer) {
     }
 
     function collisionCheck(collision) {
-        if (collision.aUser.mass > collision.bUser.mass * 1.1  && collision.aUser.radius > Math.sqrt(Math.pow(collision.aUser.x - collision.bUser.x, 2) + Math.pow(collision.aUser.y - collision.bUser.y, 2))*1.25) {
-            console.log('[DEBUG] Killing user: ' + collision.bUser.id);
-            console.log('[DEBUG] Collision info:');
-            console.log(collision);
+        if (collision.aUser.mass > collision.bUser.mass * 1.1  && collision.aUser.radius > Math.sqrt(Math.pow(collision.aUser.x - collision.bUser.x, 2) + Math.pow(collision.aUser.y - collision.bUser.y, 2))) {
+            //console.log('[DEBUG] Killing user: ' + collision.bUser.id);
+           //console.log('[DEBUG] Collision info:');
+           // console.log(collision);
 
             var numUser = util.findIndex(users, collision.bUser.id);
             if (numUser > -1) {
@@ -600,6 +600,20 @@ function tickPlayer(currentPlayer) {
         var playerCollisions = [];
 
         var otherUsers =  tree.get(currentPlayer, check);
+
+        users.forEach((user1) => {
+            users.forEach((user2) => {
+                let collision = {}
+                collision.aUser = user1
+                collision.aUser.mass = user1.cells[0].mass
+                collision.aUser.radius = user1.cells[0].radius;
+                collision.bUser = user2
+                collision.bUser.mass = user2.cells[0].mass
+                collision.bUser.radius = user1.cells[0].radius;
+                playerCollisions.push(collision)
+            })
+        })
+
 
         playerCollisions.forEach(collisionCheck);
     }
