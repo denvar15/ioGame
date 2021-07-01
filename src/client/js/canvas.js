@@ -34,6 +34,8 @@ class Canvas {
             start.style.display = 'block';
             let deeksMenu = document.getElementById('deeksMenu');
             deeksMenu.style.display = 'block';
+            $("#menuButton").removeClass("active-menuButton");
+			$(".escape-info").removeClass("active-escape-info");
         }
     }
 
