@@ -118,10 +118,12 @@ div {
 }
 
 .Logo {
-    width: 15vw;
+    width: 170px;
     text-align: left;
     opacity: 30%;
-    position: fixed
+    position: fixed;
+    top:10px;
+    left:10px;
 }
 
 #startMenu {
@@ -137,24 +139,12 @@ div {
     box-sizing: border-box;
 }
 
-#infocontainer-error {
+#metamaskConnect, #infocontainer-error {
     position: relative;
     margin: auto;
     margin-top: 50px;
-    width: 60vw;
-    padding: 20px;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    background-color: white;
-    box-sizing: border-box;
-}
-
-#metamaskConnect {
-    position: relative;
-    margin: auto;
-    margin-top: 50px;
-    width: 40vw;
+    width: 90%;
+    max-width: 560px;
     padding: 20px;
     border-radius: 5px;
     -moz-border-radius: 5px;
@@ -166,20 +156,29 @@ div {
 #deeksMenu {
     position: relative;
     margin: auto;
-    white-space: nowrap;
-    max-width: 60vw;
     padding: 5px;
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     background-color: white;
     box-sizing: border-box;
+    display: none;
+    border: #dcdcdc solid 1px;
+    border-radius: 5px;
+}
+
+#deeks {
+	display: block;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	padding: 7px 5px;
+	grid-row-gap: 10px;
+	row-gap: 10px;
 }
 
 #startMenu p {
     padding: 0;
     text-align: center;
-    font-size: x-large;
     font-weight: bold;
 }
 
@@ -193,8 +192,8 @@ div {
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
-    margin-bottom: 10px;
     outline: none;
+    font-weight: 600;
 }
 
 #playerNameInput:focus, #playerNameInput.focus {
@@ -202,7 +201,7 @@ div {
     box-shadow: 0 0 3px 1px #DDDDDD;
 }
 
-#startButton, #spectateButton, #button-connect, #metamask-connect {
+#spectateButton, #button-connect, #metamask-connect {
     position: relative;
     margin: auto;
     margin-top: 10px;
@@ -225,9 +224,64 @@ div {
     margin-bottom: 10px;
 }
 
+#startButton {
+    position: relative;
+    margin: auto;
+    margin-top: 10px;
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    font-size: large;
+    color: white;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    border: 0;
+    cursor: pointer;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    margin-bottom: 10px;
+}
+
 #spectateButton:active, #spectateButton:hover,
 #startButton:active, #startButton:hover, #button-connect:hover,
 #metamask-connect:hover, #menuButton:hover {
+    background: #55D88B;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#spectateButton:active, #spectateButton:hover, #button-connect:hover,
+#metamask-connect:hover, #menuButton:hover {
+    background: #55D88B;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.playButton {
+	background: #bcbcbc;
+	border-bottom: 2px solid #bcbcbc;
+	-webkit-box-shadow: inset 0 -2px #bcbcbc;
+    box-shadow: inset 0 -2px #bcbcbc;
+}
+
+.playButton:active, .playButton:hover {
+    background: #bcbcbc;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.active-play {
+	background: #2ecc71;
+	border-bottom: 2px solid #28be68;
+	-webkit-box-shadow: inset 0 -2px #28be68;
+    box-shadow: inset 0 -2px #28be68;
+}
+
+.active-play:active, .active-play:hover {
     background: #55D88B;
     outline: none;
     -webkit-box-shadow: none;
@@ -281,7 +335,6 @@ div {
     transition: max-height 1s;
     overflow: hidden;
     z-index: 2;
-
 }
 
 #settings {
@@ -300,9 +353,11 @@ div {
 }
 
 #startMenu .input-error {
+	display: none;
     color: red;
     opacity: 0;
     font-size : 12px;
+    text-align: center;
 }
 
 #gameAreaWrapper {
@@ -340,15 +395,26 @@ input [type="image"]:focus{
     outline: 2px solid lightgrey;
 }
 
+.deekImage {
+	outline: 1px solid #fff;
+	border: 2px solid #fff;
+	border-radius: 10px;
+}
+
+.deekImage:hover {
+    outline: 1px solid #2ecc71;
+}
+
 .menuButtonSpecial {
-    width: 10vw;
-    top: 7vh;
+	display: none;
+    width: 76px;
+    top: 35px;
     left: 10px;
-    text-align: left;
+    text-align: center;
     position: fixed;
     margin: auto;
     margin-top: 10px;
-    height: 40px;
+    height: 35px;
     box-sizing: border-box;
     font-size: large;
     color: white;
@@ -363,4 +429,107 @@ input [type="image"]:focus{
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     margin-bottom: 10px;
+}
+
+.active-menuButton {
+	display: block;
+}
+
+#metamaskConnect, #infocontainer-error {
+    display: none;
+    text-align: center;
+    margin-top: 10vh;
+}
+    	
+#metamaskConnect h3 span, #infocontainer-error h3 span {
+	color:red;	
+}
+    	
+.metamask-logo {
+	display: block;
+	margin: 25px auto 15px;
+	width: 120px;
+	height: auto;
+}
+    	
+#metamaskConnect #metamask-connect {
+	max-width: 200px;
+}
+
+.metamask-install-link {
+	margin-top:20px;
+	display: block;
+	text-align: center;
+}
+
+.metamask-info {
+	font-size: 11px;
+	color: #575757;
+	margin-top: 5px;
+}
+
+.metamask-info a {
+	font-size: 11px;
+	color: #575757;
+}
+
+.metamask-info a:hover, .metamask-info a:visited,  {
+	color: #8b8b8b;
+}
+
+.menu_logo img {
+	width: 100%;
+}
+
+.menu_input_label {
+	text-align: center;
+	font-size: 15px;
+	font-weight: 600;
+	margin: 15px auto 10px;
+}
+
+.settings_list label {
+	display: block;
+}
+
+.settings_list {
+	margin: 10px 0;
+}
+
+#deeks_empty_info {
+	padding: 0 10px;
+}
+
+#deeks_empty_info p a {
+	color: #2ecc71;
+}
+
+.escape-info {
+	display: none;
+    width: 200px;
+    top: 10px;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+    text-align: center;
+    position: fixed;
+    box-sizing: border-box;
+    color: white;
+}
+
+@media only screen  and (min-width : 600px) {
+	.Logo {
+    width: 220px;
+    }
+    
+    .menuButtonSpecial {
+    top: 45px;
+    height: 40px;
+    }
+}
+
+@media only screen  and (min-width : 900px) {
+	.active-escape-info {
+		display: block;
+	}
 }
