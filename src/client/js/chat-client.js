@@ -111,9 +111,9 @@ class ChatClient {
                 if (text.indexOf('-') === 0) {
                     var args = text.substring(1).split(' ');
                     if (commands[args[0]]) {
-                        commands[args[0]].callback(args.slice(1));
+//                         commands[args[0]].callback(args.slice(1));
                     } else {
-                        this.addSystemLine('Unrecognized Command: ' + text + ', type -help for more info.');
+//                         this.addSystemLine('Unrecognized Command: ' + text + ', type -help for more info.');
                     }
 
                 // Allows for regular messages to be sent to the server.
