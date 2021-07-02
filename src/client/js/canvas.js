@@ -30,12 +30,24 @@ class Canvas {
     escapeListener(event) {
         const key = event.key; // Or const {key} = event; in ES6+
         if (key === "Escape") {
-            let start = document.getElementById('startMenuWrapper');
-            start.style.display = 'block';
-            let deeksMenu = document.getElementById('deeksMenu');
-            deeksMenu.style.display = 'block';
-            $("#menuButton").removeClass("active-menuButton");
-			$(".escape-info").removeClass("active-escape-info");
+	        if($("#infocontainer-error").is(":visible")){
+            } else{
+	        	if($("#metamaskConnect").is(":visible")){
+            	} else{ 
+
+                let start = document.getElementById('startMenuWrapper');
+	            start.style.display = 'block';
+	            let deeksMenu = document.getElementById('deeksMenu');
+	            deeksMenu.style.display = 'block';
+	            $("#menuButton").removeClass("active-menuButton");
+				$(".escape-info").removeClass("active-escape-info");
+				
+				$("body").removeAttr("style");
+				$(".resumeButton").addClass("active-resumeButton");
+				$("#startButton").html("New Game");
+				
+				}
+            }
         }
     }
 
