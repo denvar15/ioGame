@@ -74,7 +74,8 @@ window.onload = function() {
     var btn = document.getElementById('startButton'),
         btnS = document.getElementById('spectateButton'),
         btnMenu = document.getElementById('menuButton'),
-        nickErrorText = document.querySelector('#startMenu .input-error');
+        nickErrorText = document.querySelector('#startMenu .input-error'),
+        resumeButton = document.getElementById('resumeButton');
 
     btnMenu.onclick = function () {
         let start = document.getElementById('startMenuWrapper');
@@ -84,7 +85,20 @@ window.onload = function() {
         $("#menuButton").removeClass("active-menuButton");
         $(".escape-info").removeClass("active-escape-info");
         $("body").removeAttr("style");
-    }
+        $(".resumeButton").addClass("active-resumeButton");
+        $("#startButton").html("New Game");
+    };
+    
+    resumeButton.onclick = function () {
+   		let start = document.getElementById('startMenuWrapper');
+        start.style.display = 'none';
+        let deeksMenu = document.getElementById('deeksMenu');
+        deeksMenu.style.display = 'none';
+        $("#menuButton").addClass("active-menuButton");
+        $(".escape-info").addClass("active-escape-info");
+        $(".resumeButton").removeClass("active-resumeButton");
+        $("body").css("overflow","hidden");
+   	};
 
     btnS.onclick = function () {
         startGame('spectate');
