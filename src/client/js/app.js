@@ -83,6 +83,7 @@ window.onload = function() {
         deeksMenu.style.display = deeksMenu.style.display === 'block' ? 'none' : 'block';
         $("#menuButton").removeClass("active-menuButton");
         $(".escape-info").removeClass("active-escape-info");
+        $("body").removeAttr("style");
     }
 
     btnS.onclick = function () {
