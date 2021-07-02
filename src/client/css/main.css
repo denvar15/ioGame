@@ -201,7 +201,7 @@ div {
     box-shadow: 0 0 3px 1px #DDDDDD;
 }
 
-#spectateButton, #button-connect, #metamask-connect {
+#spectateButton, #button-connect, #metamask-connect, .resumeButton {
     position: relative;
     margin: auto;
     margin-top: 10px;
@@ -224,6 +224,11 @@ div {
     margin-bottom: 10px;
 }
 
+.resumeButton {
+	display: none;
+	margin-bottom: 0;
+}
+
 #startButton {
     position: relative;
     margin: auto;
@@ -244,7 +249,7 @@ div {
 }
 
 #spectateButton:active, #spectateButton:hover, #button-connect:hover,
-#metamask-connect:hover, #menuButton:hover {
+#metamask-connect:hover, #menuButton:hover, .resumeButton:hover {
     background: #55D88B;
     outline: none;
     -webkit-box-shadow: none;
@@ -422,7 +427,7 @@ input [type="image"]:focus{
     margin-bottom: 10px;
 }
 
-.active-menuButton {
+.active-menuButton, .active-resumeButton {
 	display: block;
 }
 
