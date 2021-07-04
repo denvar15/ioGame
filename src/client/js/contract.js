@@ -1,7 +1,6 @@
 var Deeks;
-//var deekAddress = "0x7F230741e6eF6937Ba389134d272f239ea9DC511";
-var deekAddress = "0xFD9fb070F0F434B06D374a82Befbe9523C4196b1";
-//var deekAddressLocal = "0xCfEB869F69431e42cdB54A4F4f105C19C080A601";
+var deekAddress = "0x7F230741e6eF6937Ba389134d272f239ea9DC511";
+//var deekAddress = "0xFD9fb070F0F434B06D374a82Befbe9523C4196b1"; - TestNet
 
 const infoContainer = document.querySelector('#infomsg-container');
 const connectButton = document.querySelector('#button-connect');
