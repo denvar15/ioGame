@@ -16,6 +16,10 @@ const superdeekMintStatus = document.querySelector('#txMintStatus');
 //const buttonAboutGas = document.querySelector('#more_about_gas_fee');
 const classAboutGas = document.querySelector('.class_about_gas');
 const langID = document.querySelector('#langid');
+const playerNameInput = document.getElementById('playerNameInput');
+const nameLabel = document.getElementById('menu_input_label-js');
+
+
 
 async function startApp(section, item_id, js_lang) {
 	Deeks = new web3js.eth.Contract(DeekABI, deekAddress);
@@ -42,12 +46,19 @@ async function startApp(section, item_id, js_lang) {
         //alert('Metamask Connected');
 		//$(letsConnectContainer).removeClass("active-w");
 		//$(mainContainer).addClass("active-w");
+	
         const account = currentAccount;
+        const shortAccount = account.substr(0, 10);
+        
         let i = 0
         let deeksMenu = document.getElementById('deeksMenu');
         deeksMenu.style.display = 'block'
         let container = document.getElementById('deeks');
         let picked = false;
+        
+        playerNameInput.value = '';
+        
+        $("#startMenu_address").html(`Address:<br />`+account+`<br />`+shortAccount);
 
         getBalanceOf(account)
             .then(function(result) {
@@ -60,8 +71,8 @@ async function startApp(section, item_id, js_lang) {
                         getTokenOfOwnerByIndex(account, i)
                             .then(function(resultToken) {
                                 //console.log("Token "+(i+1)+": " + resultToken);
-                                //getDeekName(resultToken)
-                                //	.then(function(resultDeekName) {
+                                getDeekName(resultToken)
+                                	.then(function(resultDeekName) {
                                 //console.log("Deek "+(i+1)+" Name: " + resultDeekName);
                                 var img_url = '/images/deek_clear/' + resultToken + '.png';
                                 let deek = document.createElement('img');
@@ -70,7 +81,11 @@ async function startApp(section, item_id, js_lang) {
                                 deek.alt = 'Deek ' + resultToken;
                                 deek.width = 50
                                 deek.height = 50
+                                
                                 deek.onclick = function (click) {
+	                                playerNameInput.value = resultDeekName; 
+	                                $(nameLabel).html(`Name: `+resultDeekName); 
+	                                     
                                     window.localStorage.setItem('deekImage', deek.src)
                                     let deeks = document.getElementsByClassName("deekImage");
                                     for (let i=0; i < deeks.length; i++) {
@@ -84,8 +99,12 @@ async function startApp(section, item_id, js_lang) {
                                     deek.style.borderRadius = deek.style.borderRadius !== '10px' ? '10px' : 'none';
                                     $("#startButton").addClass("active-play");
                                 }
+                                
                                 window.localStorage.setItem('deekImage', deek.src)
                                 container.append(deek);
+                                
+								});
+                                
                                 i++
                             });
                     }
