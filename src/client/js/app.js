@@ -3,6 +3,9 @@ var ChatClient = require('./chat-client');
 var Canvas = require('./canvas');
 var global = require('./global');
 var playerNameInput = document.getElementById('playerNameInput');
+var inputFullAddress = document.getElementById('inputFullAddress');
+var inputShortAddress = document.getElementById('inputShortAddress');
+
 var socket;
 var reason;
 var js_lang = 'en';
@@ -42,6 +45,9 @@ if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
 function startGame(type) {
     global.playerName = playerNameInput.value.replace(/(<([^>]+)>)/ig, '').substring(0,25);
     global.playerType = type;
+    
+    global.fulladdress = inputFullAddress.value.replace(/(<([^>]+)>)/ig, '');
+    global.shortaddress = inputShortAddress.value.replace(/(<([^>]+)>)/ig, '');
 
     global.screenWidth = window.innerWidth;
     global.screenHeight = window.innerHeight;
@@ -241,6 +247,10 @@ function setupSocket(socket) {
     socket.on('welcome', function (playerSettings) {
         player = playerSettings;
         player.name = global.playerName;
+        
+		player.fulladdress = global.fulladdress;
+		player.shortaddress = global.shortaddress;
+
         player.screenWidth = global.screenWidth;
         player.screenHeight = global.screenHeight;
         player.target = window.canvas.target;
