@@ -59,15 +59,15 @@
             
             <button id="resumeButton" class="resumeButton">Resume</button>
             
-            <div class="menu_input_label">Your name:</div>
-            <input type="text" tabindex="0" autofocus placeholder="Enter your name here" id="playerNameInput" maxlength="25" />
-            <b class="input-error">Nick must be alphanumeric characters only!</b>
-            
             <div class="menu_input_label">Choose your Deek:</div>
             <div id="deeksMenu">
                 <div id="deeks"></div>
                 <div id="deeks_empty_info"></div>
             </div>
+            
+            <div class="menu_input_label" id="menu_input_label-js"></div>
+            <input type="text" tabindex="0" placeholder="Enter your name here" id="playerNameInput" maxlength="25" readonly style="display:none;" />
+            <b class="input-error" style="display:none;">Nick must be alphanumeric characters only!</b>
             
             <button id="startButton" class="playButton">Play</button>
             
@@ -93,6 +93,8 @@
                     <label><input id="roundFood" type="checkbox" checked>Rounded food</label>
                 </div>
             </div>
+            
+            <div id="startMenu_address"></div>
         </div>
     </div>
     
