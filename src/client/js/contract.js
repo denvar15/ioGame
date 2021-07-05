@@ -67,7 +67,7 @@ async function startApp(section, item_id, js_lang) {
                                 let deek = document.createElement('img');
                                 deek.src = 'https://deekhash.xyz/' + img_url;
                                 deek.className = 'deekImage';
-                                deek.alt = 'alt text';
+                                deek.alt = 'Deek ' + resultToken;
                                 deek.width = 50
                                 deek.height = 50
                                 deek.onclick = function (click) {
