@@ -19,7 +19,8 @@ const langID = document.querySelector('#langid');
 const playerNameInput = document.getElementById('playerNameInput');
 const nameLabel = document.getElementById('menu_input_label-js');
 
-
+const inputFullAddress = document.getElementById('inputFullAddress');
+const inputShortAddress = document.getElementById('inputShortAddress');
 
 async function startApp(section, item_id, js_lang) {
 	Deeks = new web3js.eth.Contract(DeekABI, deekAddress);
@@ -49,6 +50,9 @@ async function startApp(section, item_id, js_lang) {
 	
         const account = currentAccount;
         const shortAccount = account.substr(0, 10);
+        
+        inputFullAddress.value = account;
+        inputShortAddress.value = shortAccount;
         
         let i = 0
         let deeksMenu = document.getElementById('deeksMenu');
