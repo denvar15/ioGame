@@ -252,6 +252,11 @@ io.on('connection', function (socket) {
             radius: radius
         }];
         massTotal = c.defaultPlayerMass;
+    } else {
+	    cells = [{
+            mass: c.defaultPlayerMass,
+        }];
+        massTotal = 0;
     }
 
     var currentPlayer = {
@@ -303,7 +308,7 @@ io.on('connection', function (socket) {
                 player.massTotal = c.defaultPlayerMass;
             }
             else {
-                 player.cells = [];
+                 player.cells = [{mass: c.defaultPlayerMass}];
                  player.massTotal = 0;
             }
             player.hue = Math.round(Math.random() * 360);
