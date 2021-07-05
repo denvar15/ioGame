@@ -611,7 +611,13 @@ function gameLoop() {
         graph.fillStyle = '#FFFFFF';
         graph.font = 'bold 30px sans-serif';
         graph.fillText('You died!', global.screenWidth / 2, global.screenHeight / 2);
-        graph.fillText('Click on menu to restart', global.screenWidth / 2, global.screenHeight / 2 + 40);
+        graph.fillText('Click on Reconnect for new game!', global.screenWidth / 2, global.screenHeight / 2 + 40);
+        let reconnectButton = document.getElementById('reconnectButton');
+        $(reconnectButton).addClass("active-reconnectButton");
+        reconnectButton.onclick = () => {
+            window.location.reload(false);
+        }
+                
         let menuButton = document.getElementById('menuButton');
         menuButton.onclick = () => {
             window.location.reload(false);
@@ -671,7 +677,14 @@ function gameLoop() {
             if (reason !== '') {
                 graph.fillText('You were kicked for:', global.screenWidth / 2, global.screenHeight / 2 - 20);
                 graph.fillText(reason, global.screenWidth / 2, global.screenHeight / 2 + 20);
-                graph.fillText('Click on menu to restart', global.screenWidth / 2, global.screenHeight / 2 + 60);
+                graph.fillText('Click on Reconnect for new game!', global.screenWidth / 2, global.screenHeight / 2 + 60);
+                
+                let reconnectButton = document.getElementById('reconnectButton');
+                $(reconnectButton).addClass("active-reconnectButton");
+                reconnectButton.onclick = () => {
+                    window.location.reload(false);
+                }
+                
                 let menuButton = document.getElementById('menuButton');
                 menuButton.onclick = () => {
                     window.location.reload(false);
