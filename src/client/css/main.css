@@ -372,6 +372,10 @@ div {
 	color: #727171;
 }
 
+#inputFullAddress, #inputShortAddress {
+	display: none;
+}
+
 @media only screen  and (min-width : 1224px) {
 #mobile {
 display: none;
