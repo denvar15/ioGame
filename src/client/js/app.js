@@ -102,6 +102,8 @@ window.onload = function() {
 
     btnS.onclick = function () {
         startGame('spectate');
+        $("#menuButton").addClass("active-menuButton");
+	    $(".escape-info").addClass("active-escape-info");
     };
 
     btn.onclick = function () {
