@@ -49,7 +49,7 @@ async function startApp(section, item_id, js_lang) {
 		//$(mainContainer).addClass("active-w");
 	
         const account = currentAccount;
-        const shortAccount = account.substr(0, 10);
+        const shortAccount = account.substr(0, 8);
         
         inputFullAddress.value = account;
         inputShortAddress.value = shortAccount;
