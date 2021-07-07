@@ -296,14 +296,14 @@ function setupSocket(socket) {
             status += '<br />';
             if (leaderboard[i].id == player.id){
                 if(leaderboard[i].name.length !== 0)
-                    status += '<span class="me">' + (i + 1) + '. ' + leaderboard[i].name + ' - ' + leaderboard[i].address + '</span>';
+                    status += '<span class="me">' + (i + 1) + '. ' + leaderboard[i].name + ' - ' + leaderboard[i].address + ' - ' + (Math.round(leaderboard[i].mass) * leaderboard[i].cells.length) +'</span>';
                 else
-                    status += '<span class="me">' + (i + 1) + '. An unnamed cell' + ' - ' + leaderboard[i].address + '</span>';
+                    status += '<span class="me">' + (i + 1) + '. An unnamed cell' + ' - ' + leaderboard[i].address + ' - ' + (Math.round(leaderboard[i].mass) * leaderboard[i].cells.length) + '</span>';
             } else {
                 if(leaderboard[i].name.length !== 0)
-                    status += (i + 1) + '. ' + leaderboard[i].name + ' - ' + leaderboard[i].address;
+                    status += (i + 1) + '. ' + leaderboard[i].name + ' - ' + leaderboard[i].address + ' - ' + (Math.round(leaderboard[i].mass) * leaderboard[i].cells.length);
                 else
-                    status += (i + 1) + '. An unnamed cell' + ' - ' + leaderboard[i].address;
+                    status += (i + 1) + '. An unnamed cell' + ' - ' + leaderboard[i].address + ' - ' + (Math.round(leaderboard[i].mass) * leaderboard[i].cells.length);
             }
         }
         //status += '<br />Players: ' + data.players;
