@@ -645,6 +645,8 @@ function gameloop() {
                     id: users[i].id,
                     name: users[i].name, 
                     address: users[i].shortaddress,
+                    mass: users[i].mass,
+                    cells: users[i].cells
                 });
             }
         }
