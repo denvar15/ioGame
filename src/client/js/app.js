@@ -83,7 +83,8 @@ window.onload = function() {
         btnS = document.getElementById('spectateButton'),
         btnMenu = document.getElementById('menuButton'),
         nickErrorText = document.querySelector('#startMenu .input-error'),
-        resumeButton = document.getElementById('resumeButton');
+        resumeButton = document.getElementById('resumeButton'),
+        btnChatToggle = document.getElementById('chatbox_toggle_js');
 
     btnMenu.onclick = function () {
         let start = document.getElementById('startMenuWrapper');
@@ -129,6 +130,18 @@ window.onload = function() {
 	            nickErrorText.style.display = 'block';
 	        }
 	    }
+    };
+    
+    btnChatToggle.onclick = function () {
+	    $(".chatbox").toggleClass("chatbox-mini");
+	    var chatboxMinify = $(".chatbox").hasClass("chatbox-mini");
+	    if (chatboxMinify){
+		    $(".chatbox_toggle").addClass("chatbox_toggle_bottom");
+		    $(".chatbox_toggle").html("Open");
+		} else {
+			$(".chatbox_toggle").removeClass("chatbox_toggle_bottom");
+			$(".chatbox_toggle").html("Close");
+		}
     };
 
     var settingsMenu = document.getElementById('settingsButton');
