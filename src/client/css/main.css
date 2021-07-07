@@ -76,6 +76,31 @@ div {
     pointer-events: none;
 }
 
+.chatbox_toggle {
+	display: none;
+    position: fixed;
+    bottom: 323px;
+    left: 270px;
+    cursor: pointer;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    color: white;
+}
+
+.chatbox_toggle_bottom {
+	bottom: 40px;
+}
+
+.chatbox-mini {
+	height: 36px;
+}
+
+.chatbox-mini .chat-list {
+	display: none;
+}
+
 .chatbox .chat-list {
     padding: 5px;
     margin: 0;
@@ -378,16 +403,22 @@ div {
 }
 
 @media only screen  and (min-width : 1224px) {
-#mobile {
-display: none;
+	#mobile {
+	display: none;
+	}
+	
+	.chatbox_toggle {
+	display: block;
 	}
 }
 
 @media only screen  and (max-width : 1224px) {
-#chatbox {
-display: none;
-        }
+	#chatbox {
+		display: none;
+    }
 }
+
+
 
 input [type="image"]:focus{
  border:none;
